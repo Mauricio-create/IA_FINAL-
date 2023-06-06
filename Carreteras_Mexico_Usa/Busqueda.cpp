@@ -222,9 +222,9 @@ bool Busqueda::busqueda_primero_en_profundidad(string nodo_inicio, string nodo_f
                 informacion_del_hijo_a_adicionar);//añade un hijo al arbol de busqueda 
             Agenda.insert(Agenda.begin(), (unsigned int)(arbol_de_busqueda.size() - 1));//agenda con funcion de pila 
         }
-        if (Agenda.size() > agenda_max)
+        if ((unsigned int)Agenda.size() > (unsigned int)agenda_max)
             agenda_max = Agenda.size(); 
-        if (arbol_de_busqueda.size() > arbol_max)
+        if ((unsigned int)arbol_de_busqueda.size() > (unsigned int)arbol_max)
             arbol_max = arbol_de_busqueda.size();
     }
     return false;
@@ -272,9 +272,9 @@ bool Busqueda::busqueda_a_lo_ancho(string nodo_inicio, string nodo_final, int& n
             agrega_hijo_a_un_nodo(arbol_de_busqueda, nodo_actual, informacion_del_hijo_a_adicionar);
             Agenda.push_back((unsigned int)(arbol_de_busqueda.size() - 1));//agenda que hace funcion de una cola 
         }
-        if (Agenda.size() > agenda_max)
+        if ((unsigned int)Agenda.size() > (unsigned int) agenda_max)
             agenda_max = Agenda.size();
-        if (arbol_de_busqueda.size() > arbol_max)
+        if ((unsigned int)arbol_de_busqueda.size() > (unsigned int)arbol_max)
             arbol_max = arbol_de_busqueda.size();
     }
     return false;
@@ -325,9 +325,9 @@ bool Busqueda::busqueda_profundidad_limitada(string nodo_inicio, string nodo_fin
                 Agenda.insert(Agenda.begin(), (unsigned int)(arbol_de_busqueda.size() - 1));
             }
         }
-        if (Agenda.size() > agenda_max)
+        if ((unsigned int)Agenda.size() > (unsigned int)agenda_max)
             agenda_max = Agenda.size();
-        if (arbol_de_busqueda.size() > arbol_max)
+        if ((unsigned int)arbol_de_busqueda.size() > (unsigned int)arbol_max)
             arbol_max = arbol_de_busqueda.size();
     }
     return false;
@@ -477,9 +477,9 @@ bool Busqueda::busqueda_bidireccional(string nodo_inicio, string nodo_final, int
         if (existe_un_nodo_comun_en_las_agendas(Agenda_desde_el_inicio, Agenda_desde_el_final,
             nodo_encontrado_desde_el_inicio, nodo_encontrado_desde_el_final)) //Verifica que haya un nodo en comun, lo que significa que ya encontró una ruta 
             return true;
-        if (Agenda_desde_el_final.size()+Agenda_desde_el_inicio.size() > agenda_max)
+        if ((unsigned int)Agenda_desde_el_final.size()+Agenda_desde_el_inicio.size() > (unsigned int)agenda_max)
             agenda_max = Agenda_desde_el_final.size() + Agenda_desde_el_inicio.size(); //Maxima cantidad de elementos que tienen ambas agendas 
-        if (arbol_de_busqueda_desde_el_final.size()+arbol_de_busqueda_desde_el_inicio.size() > arbol_max)
+        if ((unsigned int)arbol_de_busqueda_desde_el_final.size()+arbol_de_busqueda_desde_el_inicio.size() > (unsigned int)arbol_max)
             arbol_max = arbol_de_busqueda_desde_el_final.size() + arbol_de_busqueda_desde_el_inicio.size();//Maxima cantidad de elementos que tienen ambos arboles  
     }
     return false;
@@ -588,7 +588,7 @@ bool Busqueda::busqueda_ascenso_a_la_colina(string nodo_inicio, string nodo_fina
         Agenda.clear();
         Agenda.push_back(mejor_nodo);//se añade el nodo con el menor costo acumulado 
 
-        if (arbol_de_busqueda.size() > arbol_max)
+        if ((unsigned int)arbol_de_busqueda.size() > (unsigned int)arbol_max)
             arbol_max = arbol_de_busqueda.size();
     }
     return false;
@@ -647,9 +647,9 @@ bool Busqueda::busqueda_primero_el_mejor(string nodo_inicio, string nodo_final, 
                         Agenda[i] = Agenda[j];
                         Agenda[j] = temporal;
                     }
-        if (Agenda.size() > agenda_max)
+        if ((unsigned int)Agenda.size() > (unsigned int)agenda_max)
             agenda_max = Agenda.size();
-        if (arbol_de_busqueda.size() > arbol_max)
+        if ((unsigned int)arbol_de_busqueda.size() > (unsigned int)arbol_max)
             arbol_max = arbol_de_busqueda.size();
     }
     return false;
@@ -707,9 +707,9 @@ bool Busqueda::busqueda_k_beans(string nodo_inicio, string nodo_final, unsigned 
                         Agenda[i] = Agenda[j];
                         Agenda[j] = temporal;
                     }
-        if (arbol_de_busqueda.size() > arbol_max)
+        if ((unsigned int)arbol_de_busqueda.size() > (unsigned int)arbol_max)
             arbol_max = arbol_de_busqueda.size();
-        if (Agenda.size() > k)//limita el tamaño de la agenda 
+        if ((unsigned int)Agenda.size() > (unsigned int)k)//limita el tamaño de la agenda 
             Agenda.erase(Agenda.begin() + k, Agenda.end());
     }
     return false;
@@ -790,9 +790,9 @@ bool Busqueda::busqueda_branch_and_bound(string nodo_inicio, string nodo_final, 
             agrega_hijo_a_un_nodo(arbol_de_busqueda, mejor_nodo, informacion_del_hijo_a_adicionar);
             Agenda.push_back((unsigned int)(arbol_de_busqueda.size() - 1));
         }
-        if (Agenda.size() > agenda_max)
+        if ((unsigned int)Agenda.size() > (unsigned int)agenda_max)
             agenda_max = Agenda.size();
-        if (arbol_de_busqueda.size() > arbol_max)
+        if ((unsigned int)arbol_de_busqueda.size() > (unsigned int)arbol_max)
             arbol_max = arbol_de_busqueda.size();
     }
     nodo_encontrado = meta_temporal;
@@ -917,9 +917,9 @@ bool Busqueda::busqueda_A_estrella(string nodo_inicio, string nodo_final, int& n
             agrega_hijo_a_un_nodo(arbol_de_busqueda, mejor_nodo, informacion_del_hijo_a_adicionar);
             Agenda.push_back((unsigned int)(arbol_de_busqueda.size() - 1));
         }
-        if (Agenda.size() > agenda_max)
+        if ((unsigned int)Agenda.size() > (unsigned int)agenda_max)
             agenda_max = Agenda.size();
-        if (arbol_de_busqueda.size() > arbol_max)
+        if ((unsigned int)arbol_de_busqueda.size() > (unsigned int)arbol_max)
             arbol_max = arbol_de_busqueda.size();
     }
     nodo_encontrado = meta_temporal;
